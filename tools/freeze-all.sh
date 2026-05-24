@@ -33,7 +33,7 @@ find apps_unfrozen -type f -name "*.py" ! -name "__init__.py" | while read -r py
     
     # Compile the file
     echo "Compiling: $py_file -> $mpy_file"
-    "${mpy_cross_dir}"mpy-cross "$py_file" -o "$mpy_file"
+    "${mp_mpy_cross_dir}"mpy-cross "$py_file" -o "$mpy_file"
     
     if [ $? -ne 0 ]; then
         echo "Error compiling $py_file for MicroPython"
@@ -86,7 +86,7 @@ find apps_unfrozen -type f -name "*.py" ! -name "__init__.py" | while read -r py
     
     # Compile the file using CircuitPython's mpy-cross
     echo "Compiling: $py_file -> $mpy_file"
-    "${mpy_cross_dir}"mpy-cross "$py_file" -o "$mpy_file"
+    "${cp_mpy_cross_dir}"mpy-cross "$py_file" -o "$mpy_file"
     
     if [ $? -ne 0 ]; then
         echo "Error compiling $py_file for CircuitPython"
