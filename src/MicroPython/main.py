@@ -1,6 +1,7 @@
 def main():
     """Main function to run the application"""
     from gc import collect, threshold, mem_free, mem_alloc
+    import machine
 
     # Initial cleanup
     collect()

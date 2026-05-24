@@ -26,6 +26,9 @@ def start(view_manager) -> bool:
         _system.add_item("Bootloader Mode")
         _system.add_item("Restart Device")
         _system.add_item("Shutdown Device")
+        _system.add_item("Bluetooth")
+        _system.add_item("USB")
+        _system.add_item("WiFi")        
 
         _system.set_selected(_system_index)
 
@@ -152,7 +155,38 @@ def run(view_manager) -> None:
                     view_manager.draw.clear()
                     _system.draw()
                     break
+        elif _system_index == 7:
+            from picoware.applications.bluetooth import bluetooth
+            from picoware.system.view import View
 
+            view_manager.add(
+                View(
+                    "bluetooth",
+                    bluetooth.run,
+                    bluetooth.start,
+                    bluetooth.stop,
+                )
+            )
+            view_manager.switch_to("bluetooth")
+        elif _system_index == 8:
+            from picoware.applications.usb import usb
+            from picoware.system.view import View
+
+            view_manager.add(
+                View(
+                    "usb",
+                    usb.run,
+                    usb.start,
+                    usb.stop,
+                )
+            )
+            view_manager.switch_to("usb")    
+        elif _system_index == 9:
+            from picoware.applications.wifi import wifi
+            from picoware.system.view import View
+
+            view_manager.add(View("wifi", wifi.run, wifi.start, wifi.stop))
+            view_manager.switch_to("wifi")
 
 def stop(view_manager) -> None:
     """Stop the app."""

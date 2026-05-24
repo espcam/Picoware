@@ -1404,11 +1404,14 @@ class FileBrowser:
                     self._needs_redraw = True
 
         # --- Main File Browser Input: Navigation and Exiting ---
-        elif btn in (BUTTON_BACK, BUTTON_ESCAPE):
-            if self._is_help_screen:
+#        elif btn in (BUTTON_BACK, BUTTON_ESCAPE):
+#            if self._is_help_screen:
+#                self._is_help_screen = False
+#                self._needs_redraw = True
+        elif btn == BUTTON_BACK and self._is_help_screen:
                 self._is_help_screen = False
                 self._needs_redraw = True
-            else:
+        elif btn == BUTTON_ESCAPE and not self._is_help_screen:
                 self.__save_settings()
                 self._vm.draw.set_scaling(self._scale_og.x, self._scale_og.y, False)
                 self._mode = self.MODE_EXIT

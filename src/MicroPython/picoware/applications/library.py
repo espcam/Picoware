@@ -22,17 +22,18 @@ def start(view_manager) -> bool:
         )
         _library.add_item("Applications")
         _library.add_item("App Store")
-        _library.add_item("Bluetooth")
+#        _library.add_item("Bluetooth")
         _library.add_item("File Manager")
         _library.add_item("GameBoy Emulator")
         _library.add_item("Games")
-        _library.add_item("Python Editor")
-        _library.add_item("Python REPL")
+##        _library.add_item("Python Editor")
+##        _library.add_item("Python REPL")
         _library.add_item("Screensavers")
         _library.add_item("System")
-        _library.add_item("Text Editor")
-        _library.add_item("USB")
-        _library.add_item("WiFi")
+        _library.add_item("Tools")
+##        _library.add_item("Text Editor")
+#        _library.add_item("USB")
+#        _library.add_item("WiFi")
         _library.set_selected(_library_index)
 
         _library.draw()
@@ -71,17 +72,17 @@ def run(view_manager) -> None:
         app_map = {
             0: "Applications",
             1: "App Store",
-            2: "Bluetooth",
-            3: "File Manager",
-            4: "GameBoy Emulator",
-            5: "Games",
-            6: "Python Editor",
-            7: "Python REPL",
-            8: "Screensavers",
-            9: "System",
-            10: "Text Editor",
-            11: "USB",
-            12: "WiFi",
+#            2: "Bluetooth",
+            2: "File Manager",
+            3: "GameBoy Emulator",
+            4: "Games",
+##            5: "Python Editor",
+##            6: "Python REPL",
+            5: "Screensavers",
+            6: "System",
+            7: "Tools",
+#            11: "USB",
+#            12: "WiFi",
         }
 
         if app_map.get(_library_index) == "System":
@@ -197,6 +198,11 @@ def run(view_manager) -> None:
 
             view_manager.add(View("repl", repl.run, repl.start, repl.stop))
             view_manager.switch_to("repl")
+        elif app_map.get(_library_index) == "Tools":
+            from picoware.applications import tools
+
+            view_manager.add(View("tools", tools.run, tools.start, tools.stop))
+            view_manager.switch_to("tools")    
         elif app_map.get(_library_index) == "Text Editor":
             from picoware.applications import text_editor
 
