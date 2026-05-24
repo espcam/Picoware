@@ -90,7 +90,7 @@ class TextEditor(textbox.TextBox):
         inp = self._vm.input_manager
         but = inp.button
 
-        if but == buttons.BUTTON_BACK:
+        if but == buttons.BUTTON_ESCAPE:
             inp.reset()
             return False
         if but == buttons.BUTTON_CTRL_UP:

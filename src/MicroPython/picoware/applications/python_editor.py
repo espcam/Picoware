@@ -231,7 +231,7 @@ def run(view_manager) -> None:
     State 3 (FILE_BROWSER): Show file browser to select existing app to edit
     State 4 (EDITOR): Launch pye editor with the specified filename
     """
-    from picoware.system.buttons import BUTTON_BACK, BUTTON_OK, BUTTON_UP, BUTTON_DOWN
+    from picoware.system.buttons import BUTTON_BACK, BUTTON_OK, BUTTON_UP, BUTTON_DOWN, BUTTON_ESCAPE
 
     global _editor_state
     global _filename
@@ -240,7 +240,7 @@ def run(view_manager) -> None:
     button = view_manager.button
 
     # Handle back button - return to previous state or exit
-    if button == BUTTON_BACK:
+    if button == BUTTON_ESCAPE:
 
         if _editor_state == STATE_INITIAL_MENU:
             # Exit the app
